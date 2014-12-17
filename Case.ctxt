@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Case()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Case\n
+comment1.params=
+comment1.target=void\ getStatuCase()
+comment1.text=\n\ Getter\ de\ la\ Case\n
+comment2.params=
+comment2.target=void\ setStatutX()
+comment2.text=\n\ Setter\ le\ statut\ de\ la\ Case\ \u00E0\ X\n
+comment3.params=
+comment3.target=void\ setStatutO()
+comment3.text=\n\ Setter\ le\ statut\ de\ la\ Case\ \u00E0\ O\n
+numComments=4

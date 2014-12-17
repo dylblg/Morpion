@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Partie()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Partie\n
+comment1.params=nomJoueur1
+comment1.target=void\ setNomJoueur1(java.lang.String)
+comment1.text=\n\ Setter\ nomJoueur1\n
+comment2.params=
+comment2.target=java.lang.String\ getNomJoueur1()
+comment2.text=\n\ Getter\ nomJoueur\ 1\n
+comment3.params=nomJoueur2
+comment3.target=void\ setNomJoueur2(java.lang.String)
+comment3.text=\n\ Setter\ nomJoueur\ 2\n
+comment4.params=
+comment4.target=java.lang.String\ getNomJoueur2()
+comment4.text=\n\ Getter\ nomJoueur\ 2\n
+comment5.params=nombreCaseJouees
+comment5.target=void\ setNombreCaseJouees(int)
+comment5.text=\n\ Setter\ nombreCaseJouees\n
+comment6.params=
+comment6.target=int\ getNombreCaseJouees()
+comment6.text=\n\ Getter\ nombreCaseJouees\n
+numComments=7
