@@ -58,9 +58,6 @@ public class Canvas
         canvas.setPreferredSize(new Dimension(width, height));
         backgroundColor = bgColor;
         frame.pack();
-        int modifiers=0;
-        int keyCode=0;
-        char keyChar='a';
         frame.addKeyListener(new KeyListener()
         {
             public void keyTyped(KeyEvent e) {
@@ -68,7 +65,7 @@ public class Canvas
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     System.out.println("woot!");
                 }
             }
@@ -80,7 +77,6 @@ public class Canvas
         
             
         });
-        KeyEvent listener = new KeyEvent(frame,81,modifiers,keyCode,keyChar);
     }
 
     /**

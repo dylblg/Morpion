@@ -12,12 +12,9 @@ import java.awt.event.KeyEvent;
  */
 public class Interface
 {
-    // instance variables - replace the example below with your own
     String name = "canvas";
     Canvas canv = new Canvas(name, 600, 500, Color.white);
-    int modifiers;
-    int keyCode;
-    char keyChar;
+
 
     /**
      * Constructor for objects of class Interface
@@ -48,9 +45,30 @@ public class Interface
 
     public void deplaceCurseur()
     {
-        Canvas frame;
-        //KeyEvent listener = new KeyEvent(frame,81,modifiers,keyCode,keyChar);
-        
+        JFrame frame = new JFrame();
+        CanvasPane canvas2 = new CanvasPane();
+        frame.setContentPane(canv);
+        frame.setTitle(title);
+        canvas.setPreferredSize(new Dimension(600, 500));
+        frame.pack();
+        frame.addKeyListener(new KeyListener()
+            {
+                public void keyTyped(KeyEvent e) {
+                }
+
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                        System.out.println("woot!");
+                    }
+                }
+
+                @Override
+                public void keyReleased(KeyEvent e) {
+                }
+
+            
+            });
     }
 
     public void curseur()
@@ -63,6 +81,7 @@ public class Interface
         canv.Rectangle(xPos, yPos, 194, 161);
 
     }
+
     public void ajoutCroix()
     {
         int xPos1 = 60 ;
