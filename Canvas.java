@@ -121,6 +121,12 @@ public class Canvas
         Ellipse2D.Double circle = new Ellipse2D.Double(xPos, yPos, diameter, diameter);
         fill(circle);
     }
+   
+    public void circle(int xPos, int yPos, int diameter, int thickness){
+        fillCircle(xPos, yPos, diameter);
+        setForegroundColor(Color.white);
+        fillCircle(xPos+thickness/2, yPos+thickness/2, diameter-thickness);
+    }
 
     /**
      * Remplit les dimensions internes du rectangle donn√© avec la couleur actuelle
@@ -132,25 +138,14 @@ public class Canvas
         fill(new Rectangle(xPos, yPos, width, height));
     }
 
-
-
-
-    
-        /**
-     * Remplit les dimensions internes du rectangle donn√© avec la couleur actuelle
-     * du fond. C'est une m√©thode pratique. Un effet similaire 
-     * peut √™tre obtenu avec la m√©thode fill.
+    /**
+     * Méthode qui crée un rectangle non plein
      */
     public void Rectangle(int xPos, int yPos, int width, int height)
     {
-        //new Rectangle(xPos, yPos, width, height);
         graphic.setStroke(new BasicStroke(5));
         graphic.drawRect(xPos, yPos, width, height);
     }
-
-
-
- 
 
     /**
      * Efface la totalit√© du fond.
@@ -267,10 +262,12 @@ public class Canvas
         graphic.drawLine(x1, y1, x2, y2);   
         canvas.repaint();
     }
-    
-    public void drawRectangle(int center, int hauteur, int largeur){
-        drawLine(center-largeur/2,center-hauteur/2,center-largeur/2,center+hauteur/2);
-        
+
+    public void drawThickLine(int x1, int y1, int x2, int y2, int thickness)
+    {
+        graphic.setStroke(new BasicStroke(thickness));
+        graphic.drawLine(x1, y1, x2, y2);   
+        canvas.repaint();
     }
 
     /**

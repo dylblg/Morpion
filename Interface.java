@@ -15,8 +15,12 @@ public class Interface
     String name = "canvas";
     Canvas canv = new Canvas(name, 600, 500, Color.white);
     //private CanvasPane canvas2;
-    int xPos = 2;
-    int yPos = 2;
+    int xPosCurs = 2;
+    int yPosCurs = 2;
+    int xPosCroix1 = 60 ;
+    int yPosCroix1 = 40 ;
+    int xPosCroix2 = 140;
+    int yPosCroix2 = 40; 
     /**
      * Constructor for objects of class Interface
      */
@@ -40,8 +44,9 @@ public class Interface
         canv.drawLine(400,0,400,500);
         canv.drawLine(0,167,600,167);
         canv.drawLine(0,334,600,334);
-        curseur(xPos, yPos);
-        ajoutCroix();
+        curseur(xPosCurs, yPosCurs);
+        ajoutCercle();
+        ajoutCroix(xPosCroix1+200, yPosCroix1, xPosCroix2+200, yPosCroix2);
     }
 
     public void deplaceCurseur() {
@@ -49,27 +54,27 @@ public class Interface
 
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPos<203){
-                        xPos+=200;
-                        curseur(xPos,yPos);
+                    if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPosCurs<203){
+                        xPosCurs+=200;
+                        curseur(xPosCurs,yPosCurs);
                         canv.erase();
                         initialiseJeu();
                     }
-                    if(e.getKeyCode() == KeyEvent.VK_LEFT && xPos>200){
-                        xPos-=200;
-                        curseur(xPos,yPos);
+                    if(e.getKeyCode() == KeyEvent.VK_LEFT && xPosCurs>200){
+                        xPosCurs-=200;
+                        curseur(xPosCurs,yPosCurs);
                         canv.erase();
                         initialiseJeu();
                     }
-                    if(e.getKeyCode() == KeyEvent.VK_UP && yPos>166){
-                        yPos-=167;
-                        curseur(xPos,yPos);
+                    if(e.getKeyCode() == KeyEvent.VK_UP && yPosCurs>166){
+                        yPosCurs-=167;
+                        curseur(xPosCurs,yPosCurs);
                         canv.erase();
                         initialiseJeu(); 
                     }
-                    if(e.getKeyCode() == KeyEvent.VK_DOWN && yPos<203){
-                        yPos+=167;
-                        curseur(xPos,yPos);
+                    if(e.getKeyCode() == KeyEvent.VK_DOWN && yPosCurs<203){
+                        yPosCurs+=167;
+                        curseur(xPosCurs,yPosCurs);
                         canv.erase();
                         initialiseJeu(); 
                     }
@@ -98,34 +103,20 @@ public class Interface
 
     }
 
-    public void ajoutCroix()
+    public void ajoutCroix(int xPos1, int yPos1, int xPos2, int yPos2)
     {
-        int xPos1 = 60 ;
-        int yPos1 = 40 ;
-        int xPos2 = 140;
-        int yPos2 = 40;               
-        canv.setForegroundColor(Color.blue);
-        canv.drawLine(xPos1,yPos1,xPos1+80,yPos1+80);
-        canv.drawLine(xPos1+1,yPos1,xPos1+81,yPos1+80);
-        canv.drawLine(xPos1+2,yPos1,xPos1+82,yPos1+80);
-        canv.drawLine(xPos1+3,yPos1,xPos1+83,yPos1+80);
-        canv.drawLine(xPos1+4,yPos1,xPos1+84,yPos1+80);
-        canv.drawLine(xPos1+5,yPos1,xPos1+85,yPos1+80);
-        canv.drawLine(xPos2,yPos2,xPos2-80,yPos2+80);
-        canv.drawLine(xPos2+1,yPos2,xPos2-79,yPos2+80);
-        canv.drawLine(xPos2+2,yPos2,xPos2-78,yPos2+80);
-        canv.drawLine(xPos2+3,yPos2,xPos2-77,yPos2+80);
-        canv.drawLine(xPos2+4,yPos2,xPos2-76,yPos2+80);
-        canv.drawLine(xPos2+5,yPos2,xPos2-75,yPos2+80);
 
+        canv.setForegroundColor(Color.blue);
+        canv.drawThickLine(xPos1, yPos1, xPos1+80, yPos1+80, 10);
+        canv.drawThickLine(xPos2, yPos2, xPos2-80, yPos2+80, 10);
     }
 
     public void ajoutCercle()
     {
-        int xPos = 60 ;
-        int yPos = 40 ;              
+        int xPos = 40 ;
+        int yPos = 25 ;              
         canv.setForegroundColor(Color.red);
-        canv.fillCircle(xPos,yPos,80);
+        canv.circle(xPos,yPos,110,20);
     }
 
 }
