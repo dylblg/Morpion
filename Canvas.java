@@ -130,10 +130,6 @@ public class Canvas
     {
         fill(new Rectangle(xPos, yPos, width, height));
     }
-<<<<<<< Updated upstream
-
-    
-=======
     
         /**
      * Remplit les dimensions internes du rectangle donn√© avec la couleur actuelle
@@ -143,10 +139,10 @@ public class Canvas
     public void Rectangle(int xPos, int yPos, int width, int height)
     {
         //new Rectangle(xPos, yPos, width, height);
+        graphic.setStroke(new BasicStroke(5));
         graphic.drawRect(xPos, yPos, width, height);
     }
- 
->>>>>>> Stashed changes
+
     /**
      * Efface la totalit√© du fond.
      */
@@ -258,6 +254,7 @@ public class Canvas
      */
     public void drawLine(int x1, int y1, int x2, int y2)
     {
+        graphic.setStroke(new BasicStroke(3));
         graphic.drawLine(x1, y1, x2, y2);   
         canvas.repaint();
     }

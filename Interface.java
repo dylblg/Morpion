@@ -13,7 +13,7 @@ public class Interface
 {
     // instance variables - replace the example below with your own
     String name = "canvas";
-    Canvas canv = new Canvas(name, 600, 500, Color.black);
+    Canvas canv = new Canvas(name, 600, 500, Color.white);
 
     /**
      * Constructor for objects of class Interface
@@ -35,8 +35,8 @@ public class Interface
      */
     public void initialiseJeu()
     {
-        canv.setForegroundColor(Color.white);
-        canv.drawLine(200,0,200,500);
+        canv.setForegroundColor(Color.black);
+        canv.drawLine(200,0,200,500); //x1, y1, x2, y2
         canv.drawLine(400,0,400,500);
         canv.drawLine(0,167,600,167);
         canv.drawLine(0,334,600,334);
@@ -44,16 +44,12 @@ public class Interface
 
     public void curseur()
     {
-        int xPos = 80;
-        int yPos = 60;
-<<<<<<< Updated upstream
-        canv.setForegroundColor(Color.lightGray);
-        canv.fillRectangle(xPos, yPos, 40, 40);
-        canv.setForegroundColor(Color.black);
-        canv.fillRectangle(xPos+2, yPos+2, 36, 36);
-=======
-        canv.Rectangle(xPos, yPos, 40, 40);
->>>>>>> Stashed changes
+        int xPos = 2;
+        int yPos = 2;
+        
+        canv.setForegroundColor(Color.red);
+        canv.Rectangle(xPos, yPos, 194, 161);
+        
     }
 
     public void ajoutCroix()
