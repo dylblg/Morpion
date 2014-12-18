@@ -131,6 +131,7 @@ public class Canvas
         fill(new Rectangle(xPos, yPos, width, height));
     }
 
+    
     /**
      * Efface la totalit√© du fond.
      */
@@ -244,6 +245,11 @@ public class Canvas
     {
         graphic.drawLine(x1, y1, x2, y2);   
         canvas.repaint();
+    }
+    
+    public void drawRectangle(int center, int hauteur, int largeur){
+        drawLine(center-largeur/2,center-hauteur/2,center-largeur/2,center+hauteur/2);
+        
     }
 
     /**

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Jeu
 {
     // instance variables - replace the example below with your own
-    private int x;
+
     private ArrayList<Case> listCase;
     
     /**
@@ -18,7 +18,10 @@ public class Jeu
     public Jeu()
     {
         listCase = new ArrayList<Case>();
-        x = 0;
+        for(int i=0; i<9; i++){
+            Case c = new Case();
+            listCase.add(c);
+        }
     }
 
     /**
@@ -27,9 +30,8 @@ public class Jeu
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public void sampleMethod(int y)
     {
         // put your code here
-        return x + y;
     }
 }
