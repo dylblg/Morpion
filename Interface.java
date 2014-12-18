@@ -46,10 +46,14 @@ public class Interface
     {
         int xPos = 80;
         int yPos = 60;
+<<<<<<< Updated upstream
         canv.setForegroundColor(Color.lightGray);
         canv.fillRectangle(xPos, yPos, 40, 40);
         canv.setForegroundColor(Color.black);
         canv.fillRectangle(xPos+2, yPos+2, 36, 36);
+=======
+        canv.Rectangle(xPos, yPos, 40, 40);
+>>>>>>> Stashed changes
     }
 
     public void ajoutCroix()

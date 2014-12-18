@@ -130,8 +130,23 @@ public class Canvas
     {
         fill(new Rectangle(xPos, yPos, width, height));
     }
+<<<<<<< Updated upstream
 
     
+=======
+    
+        /**
+     * Remplit les dimensions internes du rectangle donn√© avec la couleur actuelle
+     * du fond. C'est une m√©thode pratique. Un effet similaire 
+     * peut √™tre obtenu avec la m√©thode fill.
+     */
+    public void Rectangle(int xPos, int yPos, int width, int height)
+    {
+        //new Rectangle(xPos, yPos, width, height);
+        graphic.drawRect(xPos, yPos, width, height);
+    }
+ 
+>>>>>>> Stashed changes
     /**
      * Efface la totalit√© du fond.
      */
