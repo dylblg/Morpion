@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  * Classe Canvas - une classe qui permet un dessin graphique 
@@ -61,6 +61,25 @@ public class Canvas
         int modifiers=0;
         int keyCode=0;
         char keyChar='a';
+        frame.addKeyListener(new KeyListener()
+        {
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                    System.out.println("woot!");
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        
+        
+            
+        });
         KeyEvent listener = new KeyEvent(frame,81,modifiers,keyCode,keyChar);
     }
 

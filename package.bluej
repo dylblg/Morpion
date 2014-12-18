@@ -9,8 +9,8 @@ objectbench.height=76
 objectbench.width=668
 package.editor.height=400
 package.editor.width=560
-package.editor.x=508
-package.editor.y=61
+package.editor.x=171
+package.editor.y=58
 package.numDependencies=2
 package.numTargets=5
 package.showExtends=true
@@ -18,13 +18,8 @@ package.showUses=true
 project.charset=UTF-8
 target1.editor.height=730
 target1.editor.width=827
-<<<<<<< HEAD
 target1.editor.x=14
 target1.editor.y=23
-=======
-target1.editor.x=20
-target1.editor.y=116
->>>>>>> FETCH_HEAD
 target1.height=50
 target1.name=Canvas
 target1.naviview.expanded=true
