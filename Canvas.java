@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
+import java.awt.event.KeyEvent;
 
 /**
  * Classe Canvas - une classe qui permet un dessin graphique 
@@ -14,7 +15,7 @@ import java.awt.geom.*;
 
 public class Canvas
 {
-    private JFrame frame;
+    public JFrame frame;
     private CanvasPane canvas;
     private Graphics2D graphic;
     private Color backgroundColor;
@@ -57,6 +58,10 @@ public class Canvas
         canvas.setPreferredSize(new Dimension(width, height));
         backgroundColor = bgColor;
         frame.pack();
+        int modifiers=0;
+        int keyCode=0;
+        char keyChar='a';
+        KeyEvent listener = new KeyEvent(frame,81,modifiers,keyCode,keyChar);
     }
 
     /**
@@ -130,6 +135,10 @@ public class Canvas
     {
         fill(new Rectangle(xPos, yPos, width, height));
     }
+
+
+
+
     
         /**
      * Remplit les dimensions internes du rectangle donn√© avec la couleur actuelle
@@ -142,6 +151,10 @@ public class Canvas
         graphic.setStroke(new BasicStroke(5));
         graphic.drawRect(xPos, yPos, width, height);
     }
+
+
+
+ 
 
     /**
      * Efface la totalit√© du fond.

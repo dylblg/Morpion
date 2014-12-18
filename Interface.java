@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 import javafx.scene.shape.Circle;
+import java.awt.event.KeyEvent;
 
 /**
  * Write a description of class Interface here.
@@ -14,6 +15,9 @@ public class Interface
     // instance variables - replace the example below with your own
     String name = "canvas";
     Canvas canv = new Canvas(name, 600, 500, Color.white);
+    int modifiers;
+    int keyCode;
+    char keyChar;
 
     /**
      * Constructor for objects of class Interface
@@ -42,16 +46,23 @@ public class Interface
         canv.drawLine(0,334,600,334);
     }
 
-    public void curseur()
+    public void deplaceCurseur()
     {
-        int xPos = 2;
-        int yPos = 2;
-        
-        canv.setForegroundColor(Color.red);
-        canv.Rectangle(xPos, yPos, 194, 161);
+        Canvas frame;
+        //KeyEvent listener = new KeyEvent(frame,81,modifiers,keyCode,keyChar);
         
     }
 
+    public void curseur()
+    {
+
+        int xPos = 2;
+        int yPos = 2;
+
+        canv.setForegroundColor(Color.red);
+        canv.Rectangle(xPos, yPos, 194, 161);
+
+    }
     public void ajoutCroix()
     {
         int xPos1 = 60 ;
