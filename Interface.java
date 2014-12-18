@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 import javafx.scene.shape.Circle;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  * Write a description of class Interface here.
@@ -14,8 +14,9 @@ public class Interface
 {
     String name = "canvas";
     Canvas canv = new Canvas(name, 600, 500, Color.white);
-
-
+    //private CanvasPane canvas2;
+    int xPos = 2;
+    int yPos = 2;
     /**
      * Constructor for objects of class Interface
      */
@@ -24,8 +25,6 @@ public class Interface
         // initialise instance variables
         canv.setVisible(true);
         initialiseJeu();
-        ajoutCroix();
-        curseur();
     }
 
     /**
@@ -41,41 +40,58 @@ public class Interface
         canv.drawLine(400,0,400,500);
         canv.drawLine(0,167,600,167);
         canv.drawLine(0,334,600,334);
+        curseur(xPos, yPos);
+        ajoutCroix();
     }
 
-    public void deplaceCurseur()
-    {
-        JFrame frame = new JFrame();
-        CanvasPane canvas2 = new CanvasPane();
-        frame.setContentPane(canv);
-        frame.setTitle(title);
-        canvas.setPreferredSize(new Dimension(600, 500));
-        frame.pack();
-        frame.addKeyListener(new KeyListener()
-            {
-                public void keyTyped(KeyEvent e) {
-                }
+    public void deplaceCurseur() {
+        canv.frame.addKeyListener(new KeyListener() {
 
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                        System.out.println("woot!");
+                    if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPos<203){
+                        xPos+=200;
+                        curseur(xPos,yPos);
+                        canv.erase();
+                        initialiseJeu();
+                    }
+                    if(e.getKeyCode() == KeyEvent.VK_LEFT && xPos>200){
+                        xPos-=200;
+                        curseur(xPos,yPos);
+                        canv.erase();
+                        initialiseJeu();
+                    }
+                    if(e.getKeyCode() == KeyEvent.VK_UP && yPos>166){
+                        yPos-=167;
+                        curseur(xPos,yPos);
+                        canv.erase();
+                        initialiseJeu(); 
+                    }
+                    if(e.getKeyCode() == KeyEvent.VK_DOWN && yPos<203){
+                        yPos+=167;
+                        curseur(xPos,yPos);
+                        canv.erase();
+                        initialiseJeu(); 
                     }
                 }
 
                 @Override
-                public void keyReleased(KeyEvent e) {
+                public void keyReleased(KeyEvent arg0) {
+                    // TODO Auto-generated method stub
+
                 }
 
-            
+                @Override
+                public void keyTyped(KeyEvent e) {
+
+                }
+
             });
+
     }
 
-    public void curseur()
+    public void curseur(int xPos, int yPos)
     {
-
-        int xPos = 2;
-        int yPos = 2;
 
         canv.setForegroundColor(Color.red);
         canv.Rectangle(xPos, yPos, 194, 161);
@@ -111,5 +127,6 @@ public class Interface
         canv.setForegroundColor(Color.red);
         canv.fillCircle(xPos,yPos,80);
     }
+
 }
 
