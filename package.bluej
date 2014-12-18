@@ -18,8 +18,13 @@ package.showUses=true
 project.charset=UTF-8
 target1.editor.height=730
 target1.editor.width=827
+<<<<<<< HEAD
 target1.editor.x=14
 target1.editor.y=23
+=======
+target1.editor.x=20
+target1.editor.y=116
+>>>>>>> FETCH_HEAD
 target1.height=50
 target1.name=Canvas
 target1.naviview.expanded=true
