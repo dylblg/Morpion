@@ -14,7 +14,7 @@ import java.awt.event.*;
 public class Interface
 {
     //titre de l'objet Canvas
-    String name = "canvas"; 
+    String name = "MORPION"; 
 
     //On crée le Canvas pour s'en servir dans toute la classe
     Canvas canv = new Canvas(name, 600, 560, Color.white);
