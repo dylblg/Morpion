@@ -25,7 +25,7 @@ public class Partie
     /**
      * Setter nomJoueur1
      */
-    private void setNomJoueur1(String nomJoueur1)
+    public void setNomJoueur1(String nomJoueur1)
     {
         this.nomJoueur1 = nomJoueur1; 
     }
@@ -41,7 +41,7 @@ public class Partie
     /**
      * Setter nomJoueur 2
      */
-    private void setNomJoueur2(String nomJoueur2)
+    public void setNomJoueur2(String nomJoueur2)
     {
         this.nomJoueur2 = nomJoueur2; 
     }

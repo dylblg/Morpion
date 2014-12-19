@@ -45,7 +45,18 @@ public class Interface
 
     public Interface()
     {
+        /**
+         * On utilise les JPanel pour demander le nom des joueurs avant de commencer 
+         * la partie.
+         */
+        String joueur1 = JOptionPane.showInputDialog("Entrez le nom du joueur 1");
+        partie.setNomJoueur1(joueur1);
+        
+        String joueur2 = JOptionPane.showInputDialog("Entrez le nom du joueur 2");
+        partie.setNomJoueur2(joueur2);
+        
         initialiseJeu();
+        deplaceCurseur();
     }
 
     /**
@@ -60,7 +71,7 @@ public class Interface
         canv.drawLine(400,0,400,500);
         canv.drawLine(0,166,600,166);
         canv.drawLine(0,334,600,334);
-        canv.drawLine(0,500,600,500);
+        canv.drawLine(0,502,600,502);
         
         curseur(xPosCurs, yPosCurs, red);
         
@@ -70,12 +81,12 @@ public class Interface
         canv.setForegroundColor(Color.red);
 
         canv.setFont(new Font("palatino", Font.BOLD, 32));
-        canv.drawString(partie.getNomJoueur1(), 10, 540);
+        canv.drawString(partie.getNomJoueur1()+" : ", 10, 540);
 
         canv.setForegroundColor(Color.blue);
 
         canv.setFont(new Font("palatino", Font.BOLD, 32));
-        canv.drawString(partie.getNomJoueur2(), 300, 540);
+        canv.drawString(partie.getNomJoueur2()+" : ", 300, 540);
     }
 
     /**
@@ -90,7 +101,7 @@ public class Interface
         canv.drawLine(400,0,400,500);
         canv.drawLine(0,166,600,166);
         canv.drawLine(0,334,600,334);	
-        canv.drawLine(0,500,600,500);
+        canv.drawLine(0,502,600,502);
 
         canv.setForegroundColor(Color.red);
 
@@ -99,7 +110,6 @@ public class Interface
 
         canv.setForegroundColor(Color.blue);
 
-        canv.setFont(new Font("palatino", Font.BOLD, 32));
         canv.drawString(partie.getNomJoueur2(), 300, 540);
     }
 
