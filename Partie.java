@@ -8,7 +8,7 @@
 public class Partie
 {
     // instance variables - replace the example below with your own
-    private int x;
+
     private int nombreCaseJouees;
     private String nomJoueur1 = "Joueur 1";
     private String nomJoueur2 = "Joueur 2";
@@ -19,7 +19,7 @@ public class Partie
     public Partie()
     {
         // initialise instance variables
-        x = 0;
+
     }
 
     /**

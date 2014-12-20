@@ -20,7 +20,7 @@ public class Case
     /**
      * Getter de la Case
      */
-    public void getStatuCase()
+    public void getStatutCase()
     {
         System.out.println(statutCase);
     }
