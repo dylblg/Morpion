@@ -20,7 +20,11 @@ public class Case
     /**
      * Getter de la Case
      */
+<<<<<<< HEAD
     public String getStatutCase()
+=======
+    public void getStatuCase()
+>>>>>>> parent of a28a30a... Ajout de "entrée pour valider"
     {
         return statutCase;
     }

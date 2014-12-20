@@ -12,7 +12,6 @@ public class Jeu
 
     private ArrayList<Case> listCase;
     
-    
     /**
      * Constructor for objects of class Jeu
      */

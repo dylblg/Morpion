@@ -20,50 +20,47 @@ public class Interface
     Canvas canv = new Canvas(name, 600, 560, Color.white);
 
     //Les PosCurs sont utilisés pour la position du curseur, dans toute la classe
-    private int xPosCurs = 2;
-    private int yPosCurs = 2;
+    int xPosCurs = 2;
+    int yPosCurs = 2;
 
     //Les PosCroix sont utilisés pour la position de la croix
-    private int xPosCroix1 = 60 ;
-    private int yPosCroix1 = 40 ;
-    private int xPosCroix2 = 140;
+    int xPosCroix1 = 60 ;
+    int yPosCroix1 = 40 ;
+    int xPosCroix2 = 140;
+    int yPosCroix2 = 40; 
 
     //Les PosCercle sont utilisés pour la position de la croix
-    private int xPosCercle = 40 ;
-    private int yPosCercle = 25 ;  
+    int xPosCercle = 40 ;
+    int yPosCercle = 25 ;  
 
     //Ce booléen sert a changer de couleur le curseur en fonction du joueur
     private boolean red = true;
 
-    //Ce int permettra de recuperer un objet precis de la liste
-    private int i=0;
-
     //On crée l'objet de la classe Partie
     Partie partie = new Partie();
 
-    //On crée l'objet de la classe Jeu
+    private int i=0;
+
     Jeu jeu = new Jeu();
+
     /**
      * Constructeur de la classe. Appelle les méthode d'initialisation
      */
 
     public Interface()
     {
-        demandeNom1();
-        demandeNom2();
-        initialiseJeu(2, 2, true);   
-        deplaceCurseur(); 
-    }
+        /**
+         * On utilise les JPanel pour demander le nom des joueurs avant de commencer 
+         * la partie.
+         */
+        String joueur1 = JOptionPane.showInputDialog("Entrez le nom du joueur 1");
+        partie.setNomJoueur1(joueur1);
 
-    /**
-     * Méthode utilisée pour initialiser le jeu
-     */
+        String joueur2 = JOptionPane.showInputDialog("Entrez le nom du joueur 2");
+        partie.setNomJoueur2(joueur2);
 
-    public void initialiseJeu(int xPosCurs, int yPosCurs, boolean red)
-    {
-        dessineFond();
-        ecrisNomJoueur();   
-        curseur(xPosCurs,yPosCurs,true);
+        initialiseJeu();
+        deplaceCurseur();
     }
 
     /**
@@ -81,10 +78,18 @@ public class Interface
 
     }
 
-    /**
-     * Ecris le nom des joueurs en bas du jeu.
-     */
-    public void ecrisNomJoueur(){
+    public void initialiseJeu()
+
+    {
+        canv.setVisible(true);
+        canv.erase();
+        /**
+         * Il faut trouver un truc pour effacer juste le curseur
+         */
+        dessineFond();
+
+        curseur(xPosCurs, yPosCurs, red);
+
         canv.setForegroundColor(Color.red);
 
         canv.setFont(new Font("palatino", Font.BOLD, 32));
@@ -94,6 +99,26 @@ public class Interface
 
         canv.setFont(new Font("palatino", Font.BOLD, 32));
         canv.drawString(partie.getNomJoueur2()+" : ", 300, 540);
+    }
+
+    /**
+     * Méthode utilisée pour la fin d'une partie, pour effacer tout le canvas
+     */
+
+    public void reinitialiseJeu(){
+        canv.setVisible(true);
+        canv.erase();
+       
+        dessineFond();
+
+        canv.setForegroundColor(Color.red);
+
+        canv.setFont(new Font("palatino", Font.BOLD, 32));
+        canv.drawString(partie.getNomJoueur1(), 10, 540);
+
+        canv.setForegroundColor(Color.blue);
+
+        canv.drawString(partie.getNomJoueur2(), 300, 540);
     }
 
     /**
@@ -119,8 +144,8 @@ public class Interface
                         i++;
                         xPosCroix1 += 201;
                         xPosCroix2 += 201;
-                        xPosCercle += 201;
-                        curseur(xPosCurs, yPosCurs, red);   
+                        xPosCercle += 201; 
+                        initialiseJeu();
                     }
 
                     /**
@@ -130,11 +155,13 @@ public class Interface
                     if(e.getKeyCode() == KeyEvent.VK_LEFT && xPosCurs>200)
                     {
                         xPosCurs-=201;
+
                         i--;
                         xPosCroix1 -= 201;
                         xPosCroix2 -= 201;
                         xPosCercle -= 201;
-                        curseur(xPosCurs, yPosCurs, red);  
+
+                        initialiseJeu();
                     }
 
                     /**
@@ -143,12 +170,15 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_UP && yPosCurs>166)
                     {
+
                         //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         yPosCurs -= 168;
                         i -= 3;
                         yPosCroix1 -= 168;
-                        yPosCercle -= 168;
-                        curseur(xPosCurs, yPosCurs, red);  
+                        yPosCercle -= 168; 
+
+                        initialiseJeu(); 
+
                     }
 
                     /**
@@ -157,12 +187,14 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_DOWN && yPosCurs<203)
                     {
+
                         //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         yPosCurs += 168;
                         i += 3;
                         yPosCroix1 += 168;
                         yPosCercle += 168;
-                        curseur(xPosCurs, yPosCurs, red);
+                        
+                        initialiseJeu();
                     }
 
                     /**
@@ -193,7 +225,7 @@ public class Interface
 
                 @Override
                 public void keyReleased(KeyEvent arg0) {
-                    // TODO Auto-generated method stub
+
 
                 }
 
@@ -214,7 +246,7 @@ public class Interface
 
     public void curseur(int xPos, int yPos, boolean red)
     {
-        canv.setVisible(true);
+        
         if(red)
         {
             canv.setForegroundColor(Color.red);
@@ -236,37 +268,20 @@ public class Interface
     {
 
         canv.setForegroundColor(Color.blue);
-        canv.drawThickLine(xPos1, yPos1, xPos1+80, yPos2+80, 10);
-        canv.drawThickLine(xPos2, yPos1, xPos2-80, yPos2+80, 10);
+        canv.drawThickLine(xPos1, yPos1, xPos1+80, yPos1+80, 10);
+        canv.drawThickLine(xPos2, yPos2, xPos2-80, yPos2+80, 10);
     }
 
     /**
      * Méthode utilisée pour dessiner le cercle du joueur 1
      */
 
-    public void ajoutCercle(int xPos, int yPos)
+    public void ajoutCercle(int xPosCercle, int yPosCercle)
     {            
         canv.setForegroundColor(Color.red);
-        canv.circle(xPos,yPos,110,20);
+        canv.circle(xPosCercle,yPosCercle,110,20);
         //110 est le diametre et 20 l'"epaisseur" du trait
     }
-
-    /**
-     * On utilise les JPanel pour demander le nom des joueurs avant de commencer 
-     * la partie.
-     */
-
-    public void demandeNom1()
-    {
-        String joueur1 = JOptionPane.showInputDialog("Entrez le nom du joueur 1");
-        partie.setNomJoueur1(joueur1);
-    }
-
-    public void demandeNom2()
-    {
-        String joueur2 = JOptionPane.showInputDialog("Entrez le nom du joueur 2");
-        partie.setNomJoueur2(joueur2);
-    }
-
+    
 }
 
