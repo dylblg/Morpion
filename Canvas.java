@@ -144,14 +144,17 @@ public class Canvas
      */
     public void Rectangle(int xPos, int yPos, int width, int height)
     {
+        setVisible(true);
         graphic.setStroke(new BasicStroke(5));
         graphic.drawRect(xPos, yPos, width, height);
     }
     
     public void eraseRect(int xPos, int yPos, int width, int height)
     {
+        setVisible(true);
+        setForegroundColor(Color.white);
         graphic.setStroke(new BasicStroke(5));
-        graphic.clearRect(xPos, yPos, width, height);
+        graphic.drawRect(xPos, yPos, width, height);
     }
 
     /**

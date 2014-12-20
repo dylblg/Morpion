@@ -59,8 +59,25 @@ public class Interface
         String joueur2 = JOptionPane.showInputDialog("Entrez le nom du joueur 2");
         partie.setNomJoueur2(joueur2);
 
-        initialiseJeu();
+        canv.setVisible(true);
+
+        dessineJoueur1();
+        dessineJoueur2();
+        dessineFond();
+        initialiseJeu(xPosCurs, yPosCurs);
         deplaceCurseur();
+    }
+
+    /**
+     * Méthode utilisée pour la fin d'une partie, pour effacer tout le canvas
+     */
+
+    public void reinitialiseJeu(){
+        canv.setVisible(true);
+        canv.erase();
+        dessineJoueur1();
+        dessineJoueur2();
+        dessineFond();
     }
 
     /**
@@ -78,47 +95,14 @@ public class Interface
 
     }
 
-    public void initialiseJeu()
+    public void initialiseJeu(int xPos,int yPos)
 
     {
-        canv.setVisible(true);
-        canv.erase();
-        /**
-         * Il faut trouver un truc pour effacer juste le curseur
-         */
+
+        dessineJoueur1();
+        dessineJoueur2();
         dessineFond();
-
-        curseur(xPosCurs, yPosCurs, red);
-
-        canv.setForegroundColor(Color.red);
-
-        canv.setFont(new Font("palatino", Font.BOLD, 32));
-        canv.drawString(partie.getNomJoueur1()+" : ", 10, 540);
-
-        canv.setForegroundColor(Color.blue);
-
-        canv.setFont(new Font("palatino", Font.BOLD, 32));
-        canv.drawString(partie.getNomJoueur2()+" : ", 300, 540);
-    }
-
-    /**
-     * Méthode utilisée pour la fin d'une partie, pour effacer tout le canvas
-     */
-
-    public void reinitialiseJeu(){
-        canv.setVisible(true);
-        canv.erase();
-       
-        dessineFond();
-
-        canv.setForegroundColor(Color.red);
-
-        canv.setFont(new Font("palatino", Font.BOLD, 32));
-        canv.drawString(partie.getNomJoueur1(), 10, 540);
-
-        canv.setForegroundColor(Color.blue);
-
-        canv.drawString(partie.getNomJoueur2(), 300, 540);
+        curseur(xPos, yPos, red);
     }
 
     /**
@@ -139,13 +123,13 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPosCurs<205)
                     {
-                        //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
+                        canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         xPosCurs+=201;
                         i++;
                         xPosCroix1 += 201;
                         xPosCroix2 += 201;
                         xPosCercle += 201; 
-                        initialiseJeu();
+                        initialiseJeu(xPosCurs, yPosCurs);
                     }
 
                     /**
@@ -154,6 +138,8 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_LEFT && xPosCurs>200)
                     {
+                        canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
+
                         xPosCurs-=201;
 
                         i--;
@@ -161,7 +147,7 @@ public class Interface
                         xPosCroix2 -= 201;
                         xPosCercle -= 201;
 
-                        initialiseJeu();
+                        initialiseJeu(xPosCurs, yPosCurs);
                     }
 
                     /**
@@ -171,13 +157,13 @@ public class Interface
                     if(e.getKeyCode() == KeyEvent.VK_UP && yPosCurs>166)
                     {
 
-                        //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
+                        canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         yPosCurs -= 168;
                         i -= 3;
                         yPosCroix1 -= 168;
                         yPosCercle -= 168; 
 
-                        initialiseJeu(); 
+                        initialiseJeu(xPosCurs, yPosCurs);
 
                     }
 
@@ -188,13 +174,12 @@ public class Interface
                     if(e.getKeyCode() == KeyEvent.VK_DOWN && yPosCurs<203)
                     {
 
-                        //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
+                        canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         yPosCurs += 168;
                         i += 3;
                         yPosCroix1 += 168;
                         yPosCercle += 168;
-                        
-                        initialiseJeu();
+                        initialiseJeu(xPosCurs, yPosCurs);
                     }
 
                     /**
@@ -226,7 +211,6 @@ public class Interface
                 @Override
                 public void keyReleased(KeyEvent arg0) {
 
-
                 }
 
                 @Override
@@ -246,7 +230,7 @@ public class Interface
 
     public void curseur(int xPos, int yPos, boolean red)
     {
-        
+
         if(red)
         {
             canv.setForegroundColor(Color.red);
@@ -256,7 +240,6 @@ public class Interface
         }
 
         canv.Rectangle(xPos, yPos, 193, 160);
-        canv.setVisible(true);
 
     }
 
@@ -282,6 +265,20 @@ public class Interface
         canv.circle(xPosCercle,yPosCercle,110,20);
         //110 est le diametre et 20 l'"epaisseur" du trait
     }
-    
+
+    public void dessineJoueur1(){
+        canv.setForegroundColor(Color.red);
+
+        canv.setFont(new Font("palatino", Font.BOLD, 32));
+        canv.drawString(partie.getNomJoueur1()+" : ", 10, 540);
+    }
+
+    public void dessineJoueur2(){
+
+        canv.setForegroundColor(Color.blue);
+
+        canv.setFont(new Font("palatino", Font.BOLD, 32));
+        canv.drawString(partie.getNomJoueur2()+" : ", 300, 540);
+    }
 }
 
