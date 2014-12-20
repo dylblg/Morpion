@@ -20,9 +20,9 @@ public class Case
     /**
      * Getter de la Case
      */
-    public void getStatutCase()
+    public String getStatutCase()
     {
-        System.out.println(statutCase);
+        return statutCase;
     }
     
     /**

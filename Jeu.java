@@ -26,13 +26,27 @@ public class Jeu
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Set le statut de la case à X
      */
-    public void sampleMethod(int y)
+    public void setStatutJoueur1(int i)
     {
-        // put your code here
+        Case c = listCase.get(i);
+        c.setStatutX();
+    }
+    
+     /**
+     * Set le statut de la case à O
+     */
+    public void setStatutJoueur2(int i)
+    {
+        Case c = listCase.get(i);
+        c.setStatutO();
+    }
+    
+    public String getStatutClasseCase(int i)
+    {
+        Case c = listCase.get(i);
+        String statut = c.getStatutCase();
+        return statut;
     }
 }

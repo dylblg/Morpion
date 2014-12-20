@@ -62,8 +62,8 @@ public class Interface
     public void initialiseJeu(int xPosCurs, int yPosCurs, boolean red)
     {
         dessineFond();
-        ecrisNomJoueur();
-        curseur(xPosCurs, yPosCurs, red);       
+        ecrisNomJoueur();   
+        curseur(xPosCurs,yPosCurs,true);
     }
 
     /**
@@ -102,7 +102,8 @@ public class Interface
      */
 
     public void deplaceCurseur() {
-        canv.frame.addKeyListener(new KeyListener() {
+        canv.frame.addKeyListener(new KeyListener()
+            {
 
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -113,13 +114,13 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_RIGHT && xPosCurs<205)
                     {
+                        //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         xPosCurs+=201;
-                        canv.erase();
                         i++;
                         xPosCroix1 += 201;
                         xPosCroix2 += 201;
                         xPosCercle += 201;
-                        initialiseJeu(xPosCurs, yPosCurs, red);
+                        curseur(xPosCurs, yPosCurs, red);   
                     }
 
                     /**
@@ -129,12 +130,11 @@ public class Interface
                     if(e.getKeyCode() == KeyEvent.VK_LEFT && xPosCurs>200)
                     {
                         xPosCurs-=201;
-                        canv.erase();
                         i--;
                         xPosCroix1 -= 201;
                         xPosCroix2 -= 201;
                         xPosCercle -= 201;
-                        initialiseJeu(xPosCurs, yPosCurs, red);
+                        curseur(xPosCurs, yPosCurs, red);  
                     }
 
                     /**
@@ -143,12 +143,12 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_UP && yPosCurs>166)
                     {
+                        //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         yPosCurs -= 168;
-                        canv.erase();
                         i -= 3;
                         yPosCroix1 -= 168;
                         yPosCercle -= 168;
-                        initialiseJeu(xPosCurs, yPosCurs, red);
+                        curseur(xPosCurs, yPosCurs, red);  
                     }
 
                     /**
@@ -157,22 +157,23 @@ public class Interface
                      */
                     if(e.getKeyCode() == KeyEvent.VK_DOWN && yPosCurs<203)
                     {
+                        //canv.eraseRect(xPosCurs, yPosCurs, 193, 160);
                         yPosCurs += 168;
-                        canv.erase();
                         i += 3;
                         yPosCroix1 += 168;
                         yPosCercle += 168;
-                        initialiseJeu(xPosCurs, yPosCurs, red);
+                        curseur(xPosCurs, yPosCurs, red);
                     }
-                    
+
                     /**
                      * Si on appuie sur entrée et que c'est le tour du joueur 1 (red)
                      * alors on dessine un cercle
                      */
-                    if(e.getKeyCode() == KeyEvent.VK_ENTER && red)
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER && red && 
+                    jeu.getStatutClasseCase(i)=="libre")
                     {
                         ajoutCercle(xPosCercle, yPosCercle);
-                        initialiseJeu(xPosCurs, yPosCurs, red);
+                        jeu.setStatutJoueur1(i);
                         //On passe son tour
                         red = !red;
                     }
@@ -180,10 +181,11 @@ public class Interface
                      * Si on appuie sur entrée et que c'est le tour du joueur 2 (!red)
                      * alors on dessine une croix
                      */
-                    else if(e.getKeyCode() == KeyEvent.VK_ENTER && !red)
+                    else if(e.getKeyCode() == KeyEvent.VK_ENTER && !red && 
+                    jeu.getStatutClasseCase(i)=="libre")
                     {
                         ajoutCroix(xPosCroix1, yPosCroix1, xPosCroix2, yPosCroix1);
-                        initialiseJeu(xPosCurs, yPosCurs, red);
+                        jeu.setStatutJoueur2(i);
                         //On passe son tour
                         red = !red;  
                     }
@@ -200,7 +202,8 @@ public class Interface
 
                 }
 
-            });
+            }
+        );
 
     }
 
@@ -211,6 +214,7 @@ public class Interface
 
     public void curseur(int xPos, int yPos, boolean red)
     {
+        canv.setVisible(true);
         if(red)
         {
             canv.setForegroundColor(Color.red);
@@ -220,6 +224,7 @@ public class Interface
         }
 
         canv.Rectangle(xPos, yPos, 193, 160);
+        canv.setVisible(true);
 
     }
 

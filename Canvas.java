@@ -122,7 +122,8 @@ public class Canvas
         fill(circle);
     }
    
-    public void circle(int xPos, int yPos, int diameter, int thickness){
+    public void circle(int xPos, int yPos, int diameter, int thickness)
+    {
         fillCircle(xPos, yPos, diameter);
         setForegroundColor(Color.white);
         fillCircle(xPos+thickness/2, yPos+thickness/2, diameter-thickness);
@@ -145,6 +146,12 @@ public class Canvas
     {
         graphic.setStroke(new BasicStroke(5));
         graphic.drawRect(xPos, yPos, width, height);
+    }
+    
+    public void eraseRect(int xPos, int yPos, int width, int height)
+    {
+        graphic.setStroke(new BasicStroke(5));
+        graphic.clearRect(xPos, yPos, width, height);
     }
 
     /**
