@@ -29,7 +29,7 @@ public class Interface
     int xPosCroix2 = 140;
     int yPosCroix2 = 40; 
 
-    //Les PosCercle sont utilisés pour la position de la croix
+    //Les PosCercle sont utilisés pour la position du cercle
     int xPosCercle = 40 ;
     int yPosCercle = 25 ;  
 
@@ -66,6 +66,7 @@ public class Interface
         dessineFond();
         initialiseJeu(xPosCurs, yPosCurs);
         deplaceCurseur();
+        jeu.gagnant();
     }
 
     /**
@@ -193,6 +194,7 @@ public class Interface
                         jeu.setStatutJoueur1(i);
                         //On passe son tour
                         red = !red;
+                        partie.incNombreCaseJouees();
                     }
                     /**
                      * Si on appuie sur entrée et que c'est le tour du joueur 2 (!red)
@@ -204,7 +206,8 @@ public class Interface
                         ajoutCroix(xPosCroix1, yPosCroix1, xPosCroix2, yPosCroix1);
                         jeu.setStatutJoueur2(i);
                         //On passe son tour
-                        red = !red;  
+                        red = !red;
+                        partie.incNombreCaseJouees();
                     }
                 }
 
@@ -221,8 +224,13 @@ public class Interface
             }
         );
 
-    }
+        int xPos = 2;
+        int yPos = 2;
+        canv.setForegroundColor(Color.red);
+        //canv.Rectangle(xPos, yPos, 194, 161);
+        canv.rectangle(xPos, yPos, 194, 161);
 
+    }
     /**
      * Méthode pour afficher le curseur en fonction de x et y ainsi que du booléen
      * red. S'il est a false, alors le curseur est bleu (joueur 2)
@@ -279,6 +287,11 @@ public class Interface
 
         canv.setFont(new Font("palatino", Font.BOLD, 32));
         canv.drawString(partie.getNomJoueur2()+" : ", 300, 540);
+    }
+
+    public void deplacement()
+    {
+        //graphic.setLocation(201, 0);
     }
 }
 

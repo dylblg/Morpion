@@ -10,4 +10,6 @@ comment2.target=void\ setStatutJoueur2(int)
 comment2.text=\n\ Set\ le\ statut\ de\ la\ case\ \u00E0\ O\n
 comment3.params=i
 comment3.target=java.lang.String\ getStatutClasseCase(int)
-numComments=4
+comment4.params=
+comment4.target=void\ gagnant()
+numComments=5

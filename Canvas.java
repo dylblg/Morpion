@@ -376,6 +376,12 @@ public class Canvas
             // ignore l'exception pour le moment
         }
     }
+    
+    public void rectangle(int xPos, int yPos, int width, int height)
+    {
+        Rectangle rect = new Rectangle(xPos, yPos, width, height);
+        graphic.setStroke(new BasicStroke(5)); 
+    }
 
     /************************************************************************
      * Classe CanvasPane imbriqu√©e - le composant r√©el du fond contenu dans 

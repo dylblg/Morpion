@@ -8,19 +8,9 @@
 public class Partie
 {
     // instance variables - replace the example below with your own
-    private int x;
-    private int nombreCaseJouees;
+    private static int nombreCaseJouees;
     private String nomJoueur1 = "Joueur 1";
     private String nomJoueur2 = "Joueur 2";
-
-    /**
-     * Constructor for objects of class Partie
-     */
-    public Partie()
-    {
-        // initialise instance variables
-        x = 0;
-    }
 
     /**
      * Setter nomJoueur1
@@ -65,8 +55,17 @@ public class Partie
     /**
      * Getter nombreCaseJouees
      */
-    public int getNombreCaseJouees()
+    public static int getNombreCaseJouees()
     {
         return nombreCaseJouees; 
+    }
+    
+    /**
+     *  Incrémente nombreCaseJouees
+     *
+     */
+    public void incNombreCaseJouees()
+    {
+        nombreCaseJouees = nombreCaseJouees+1;
     }
 }
