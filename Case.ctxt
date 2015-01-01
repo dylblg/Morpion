@@ -11,4 +11,6 @@ comment2.text=\n\ Setter\ le\ statut\ de\ la\ Case\ \u00E0\ X\n
 comment3.params=
 comment3.target=void\ setStatutO()
 comment3.text=\n\ Setter\ le\ statut\ de\ la\ Case\ \u00E0\ O\n
-numComments=4
+comment4.params=
+comment4.target=void\ setStatutLibre()
+numComments=5

@@ -8,6 +8,7 @@
 public class Case
 {
     private String statutCase;
+    //private int statut; pour addition au cas ou
 
     /**
      * Constructor for objects of class Case
@@ -15,6 +16,7 @@ public class Case
     public Case()
     {
         statutCase = "libre";
+        //statut = 0;
     }
 
     /**
@@ -22,10 +24,15 @@ public class Case
      */
 
     public String getStatutCase()
-
     {
         return statutCase;
     }
+    /**
+    public int getStatut()
+    {
+    return statut;
+    }
+     **/
 
     /**
      * Setter le statut de la Case à X
@@ -33,6 +40,7 @@ public class Case
     public void setStatutX()
     {
         statutCase = "X";
+        //statut = 4;
     }
 
     /**
@@ -41,5 +49,11 @@ public class Case
     public void setStatutO()
     {
         statutCase = "O";
+        //statut = 1;
+    }
+
+    public void setStatutLibre()
+    {
+        statutCase = "libre";
     }
 }
