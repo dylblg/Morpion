@@ -40,8 +40,8 @@ public class Interface
     Partie partie = new Partie();
 
     //Compteurs de victoires:
-    public int compteVict1=0;
-    public int compteVict2=0;
+    private int compteVict1=0;
+    private int compteVict2=0;
 
     /**
      * Constructeur de la classe. Appelle les méthode d'initialisation
@@ -49,6 +49,13 @@ public class Interface
 
     public Interface()
     {
+    }
+
+    public void messageAcceuil()
+    {
+        JOptionPane.showMessageDialog(null,
+            "Pour jouer, utiliser les flèches du clavier et la touche entrée."
+        , "How To Play", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void initialiseVariable()
@@ -77,9 +84,6 @@ public class Interface
     public void reinitialiseJeu(){
         canv.setVisible(true);
         canv.erase();
-        dessineJoueur1();
-        dessineJoueur2();
-        dessineFond();
     }
 
     /**
@@ -164,6 +168,17 @@ public class Interface
 
         canv.setFont(new Font("palatino", Font.BOLD, 32));
         canv.drawString(partie.getNomJoueur2()+" : "+compteVict2, 300, 540);
+    }
+
+    public void setComptVict(int y)
+    {
+        if(y==1)
+        {
+            compteVict1++; 
+        }
+        else {
+            compteVict2++;
+        }
     }
 
     public boolean getRed()

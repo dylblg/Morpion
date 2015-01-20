@@ -40,6 +40,7 @@ public class Jeu
         String joueur2 = JOptionPane.showInputDialog("Entrez le nom du joueur 2");
         inter.partie.setNomJoueur2(joueur2);
         inter.initialiseVariable();
+        inter.messageAcceuil();
         dessineJeu();
     }
 
@@ -58,10 +59,10 @@ public class Jeu
             Case c = listCase.get(i);
             c.setStatutLibre();
         }
-        inter.canv.erase();
+        inter.reinitialiseJeu();
         inter.initialiseVariable();
+        inter.initialiseJeu(inter.xPosCurs, inter.yPosCurs);
         j=0;
-        dessineJeu();
     }
 
     /**
@@ -98,56 +99,56 @@ public class Jeu
             // première ligne
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(3).equals("O") && getStatutClasseCase(4).equals("O") && getStatutClasseCase(5).equals("O"))
             // deuxième ligne
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(6).equals("O") && getStatutClasseCase(7).equals("O") && getStatutClasseCase(8).equals("O"))
             // troisième ligne
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(0).equals("O") && getStatutClasseCase(3).equals("O") && getStatutClasseCase(6).equals("O"))
             // première colonne
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(1).equals("O") && getStatutClasseCase(4).equals("O") && getStatutClasseCase(7).equals("O"))
             // deuxième colonne
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(2).equals("O") && getStatutClasseCase(5).equals("O") && getStatutClasseCase(8).equals("O"))
             // troisième colonne
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(0).equals("O") && getStatutClasseCase(4).equals("O") && getStatutClasseCase(8).equals("O"))
             // première diagonale
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }
             else if (getStatutClasseCase(2).equals("O") && getStatutClasseCase(4).equals("O") && getStatutClasseCase(6).equals("O"))
             // deuxième diagonale
             {
                 afficheGagnant(true);
-                inter.compteVict1++;
+                inter.setComptVict(1);
                 break;
             }    
 
@@ -155,58 +156,58 @@ public class Jeu
             // première ligne
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(3).equals("X") && getStatutClasseCase(4).equals("X") && getStatutClasseCase(5).equals("X"))
             // deuxième ligne
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(6).equals("X") && getStatutClasseCase(7).equals("X") && getStatutClasseCase(8).equals("X"))
             // troisième ligne
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(0).equals("X") && getStatutClasseCase(3).equals("X") && getStatutClasseCase(6).equals("X"))
             // première colonne
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(1).equals("X") && getStatutClasseCase(4).equals("X") && getStatutClasseCase(7).equals("X"))
             // deuxième colonne
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(2).equals("X") && getStatutClasseCase(5).equals("X") && getStatutClasseCase(8).equals("X"))
             // troisième colonne
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(0).equals("X") && getStatutClasseCase(4).equals("X") && getStatutClasseCase(8).equals("X"))
             // première diagonale
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
             }
             else if (getStatutClasseCase(2).equals("X") && getStatutClasseCase(4).equals("X") && getStatutClasseCase(6).equals("X"))
             // deuxième diagonale
             {
                 afficheGagnant(false);
-                inter.compteVict2++;
+                inter.setComptVict(2);
                 break;
-            }   
+            }
         }
     } 
 
@@ -302,6 +303,7 @@ public class Jeu
                         //On passe son tour
                         inter.setInverseRed();
                         inter.partie.incNombreCaseJouees();
+
                     }
                     /**
                      * Si on appuie sur entrée et que c'est le tour du joueur 2 (!red)
@@ -315,6 +317,7 @@ public class Jeu
                         //On passe son tour
                         inter.setInverseRed();
                         inter.partie.incNombreCaseJouees();
+
                     }
                 }
 
@@ -341,26 +344,17 @@ public class Jeu
 
     public void afficheGagnant(boolean joueur1)
     {
-        inter.canv.erase();
-        String message1 = " a gagné !";
-        String message2 = "Prochaine partie dans 3 secondes" ;
         if(joueur1){
-            inter.canv.setForegroundColor(Color.blue);
-            inter.canv.setFont(new Font("palatino", Font.BOLD, 50));
-            inter.canv.drawString(inter.partie.getNomJoueur1()+message1, 60, 60);
+            JOptionPane.showMessageDialog(null,
+            "C'est "+inter.partie.getNomJoueur1()+" qui a gagné !"
+            , "Victoire !", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(!joueur1)
         {
-            inter.canv.setForegroundColor(Color.red);
-            inter.canv.setFont(new Font("palatino", Font.BOLD, 50));
-            inter.canv.drawString(inter.partie.getNomJoueur2()+message1, 60, 60); 
+            JOptionPane.showMessageDialog(null,
+            "C'est "+inter.partie.getNomJoueur2()+" qui a gagné !"
+            , "Victoire !", JOptionPane.INFORMATION_MESSAGE);
         }
-
-        inter.canv.setForegroundColor(Color.black);
-
-        inter.canv.setFont(new Font("palatino", Font.BOLD, 30));
-        inter.canv.drawString(message2, 60, 120);
-        inter.canv.wait(3000);
         recommenceJeu();
     }    
 
