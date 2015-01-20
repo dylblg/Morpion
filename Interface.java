@@ -53,11 +53,20 @@ public class Interface
 
     public void messageAcceuil()
     {
+<<<<<<< HEAD
         JOptionPane.showMessageDialog(null,
             "Pour jouer, utiliser les flèches du clavier et la touche entrée."
         , "How To Play", JOptionPane.INFORMATION_MESSAGE);
     }
 
+=======
+        canv.setFont(new Font("palatino", Font.BOLD, 55));
+        canv.drawString("Jouez avec les flèches", 20 , 60);
+        canv.drawString("et entrée", 20 , 120);
+        canv.wait(3000);
+        canv.erase();
+    }
+>>>>>>> FETCH_HEAD
     public void initialiseVariable()
     {
         //Les PosCurs sont utilisés pour la position du curseur, dans toute la classe

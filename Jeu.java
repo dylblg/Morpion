@@ -63,6 +63,10 @@ public class Jeu
         inter.initialiseVariable();
         inter.initialiseJeu(inter.xPosCurs, inter.yPosCurs);
         j=0;
+<<<<<<< HEAD
+=======
+        deplaceCurseur();
+>>>>>>> FETCH_HEAD
     }
 
     /**
@@ -303,7 +307,11 @@ public class Jeu
                         //On passe son tour
                         inter.setInverseRed();
                         inter.partie.incNombreCaseJouees();
+<<<<<<< HEAD
 
+=======
+                     
+>>>>>>> FETCH_HEAD
                     }
                     /**
                      * Si on appuie sur entrée et que c'est le tour du joueur 2 (!red)
@@ -317,7 +325,11 @@ public class Jeu
                         //On passe son tour
                         inter.setInverseRed();
                         inter.partie.incNombreCaseJouees();
+<<<<<<< HEAD
 
+=======
+                        
+>>>>>>> FETCH_HEAD
                     }
                 }
 
@@ -345,6 +357,7 @@ public class Jeu
     public void afficheGagnant(boolean joueur1)
     {
         if(joueur1){
+<<<<<<< HEAD
             JOptionPane.showMessageDialog(null,
             "C'est "+inter.partie.getNomJoueur1()+" qui a gagné !"
             , "Victoire !", JOptionPane.INFORMATION_MESSAGE);
@@ -354,6 +367,17 @@ public class Jeu
             JOptionPane.showMessageDialog(null,
             "C'est "+inter.partie.getNomJoueur2()+" qui a gagné !"
             , "Victoire !", JOptionPane.INFORMATION_MESSAGE);
+=======
+            inter.canv.setForegroundColor(Color.red);
+            inter.canv.setFont(new Font("palatino", Font.BOLD, 50));
+            inter.canv.drawString(inter.partie.getNomJoueur1()+message1, 60, 60);
+        }
+        else if(!joueur1)
+        {
+            inter.canv.setForegroundColor(Color.blue);
+            inter.canv.setFont(new Font("palatino", Font.BOLD, 50));
+            inter.canv.drawString(inter.partie.getNomJoueur2()+message1, 60, 60); 
+>>>>>>> FETCH_HEAD
         }
         recommenceJeu();
     }    
